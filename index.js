@@ -1,5 +1,6 @@
 const express = require("express");
 const axios = require("axios");
+const cors = require("cors");
 const { graphqlHTTP } = require("express-graphql");
 const {
   GraphQLSchema,
@@ -10,6 +11,12 @@ const {
 } = require("graphql");
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 const picture = new GraphQLObjectType({
   name: "Picture",
